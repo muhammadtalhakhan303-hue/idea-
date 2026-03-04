@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideazium - Ideas That Build Futures</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Nastaliq+Urdu:wght@400;700&family=Tajawal:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <nav class="navbar glass">
+        <div class="logo">
+            <span class="glow-text">Ideazium</span>
+        </div>
+        <div class="nav-controls">
+            <select id="lang-switcher" class="glass-select">
+                <option value="en">English</option>
+                <option value="ur">اردو</option>
+                <option value="ar">العربية</option>
+            </select>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1 class="hero-title" data-i18n="heroTitle">Generate Smart Business Ideas in Seconds</h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">Enter your skills, passion, and budget to get AI-powered
+            ideas.</p>
+    </header>
+
+    <main class="container">
+        <div class="smart-filters">
+            <button class="filter-btn glass" data-i18n="filterLowBudget">Low budget ideas</button>
+            <button class="filter-btn glass" data-i18n="filterStudent">Student-friendly</button>
+            <button class="filter-btn glass" data-i18n="filterOnline">Online business</button>
+            <button class="filter-btn glass" data-i18n="filterHome">Home-based</button>
+            <button class="filter-btn glass" data-i18n="filterTech">Tech-based</button>
+        </div>
+
+        <section class="generator-section glass card">
+            <form id="idea-form">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label data-i18n="labelPassion">Passion / Interest</label>
+                        <input type="text" id="passion" required class="glass-input"
+                            data-i18n-placeholder="placeholderPassion" placeholder="E.g., Video editing, Cooking...">
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="labelSkills">Skills</label>
+                        <input type="text" id="skills" required class="glass-input"
+                            data-i18n-placeholder="placeholderSkills"
+                            placeholder="E.g., Graphic design, Communication...">
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="labelBudget">Budget Range</label>
+                        <select id="budget" class="glass-input">
+                            <option value="low" data-i18n="budgetLow">Under 50,000 PKR</option>
+                            <option value="med" data-i18n="budgetMed">50k - 200k PKR</option>
+                            <option value="high" data-i18n="budgetHigh">Above 200k PKR</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="labelCity">City / Country</label>
+                        <input type="text" id="city" class="glass-input" data-i18n-placeholder="placeholderCity"
+                            placeholder="E.g., Karachi, Pakistan">
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="labelTime">Available Time</label>
+                        <select id="time" class="glass-input">
+                            <option value="part" data-i18n="timePart">Part-time</option>
+                            <option value="full" data-i18n="timeFull">Full-time</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label data-i18n="labelRisk">Risk Level Preference</label>
+                        <select id="risk" class="glass-input">
+                            <option value="low" data-i18n="riskLow">Low (Safe)</option>
+                            <option value="med" data-i18n="riskMed">Medium</option>
+                            <option value="high" data-i18n="riskHigh">High (Aggressive)</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary glow-button" id="generate-btn">
+                    <span data-i18n="btnGenerate">Generate Idea</span>
+                    <i class="fas fa-magic" style="margin-left: 8px;"></i>
+                </button>
+            </form>
+        </section>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p data-i18n="loadingText">AI is generating your brilliant ideas...</p>
+        </div>
+
+        <section id="results" class="hidden">
+            <h2 class="section-title" data-i18n="resultsTitle">Your Tailored Business Ideas</h2>
+            <div id="cards-container" class="cards-grid">
+                <!-- Cards will be injected here via JS -->
+            </div>
+        </section>
+
+        <div class="bottom-sections grid-2">
+            <section class="premium-box glass card">
+                <h3 data-i18n="premiumTitle"><i class="fas fa-crown gold" style="margin-right:8px;"></i> Ideazium
+                    Premium</h3>
+                <p data-i18n="premiumDesc">Unlock full business plans, marketing strategies, and competitor analysis.
+                </p>
+                <ul class="premium-features">
+                    <li><i class="fas fa-check text-electric" style="margin-right:8px;"></i> <span
+                            data-i18n="feat1">Full PDF Plan</span></li>
+                    <li><i class="fas fa-check text-electric" style="margin-right:8px;"></i> <span
+                            data-i18n="feat2">Brand Identity & Logo</span></li>
+                    <li><i class="fas fa-check text-electric" style="margin-right:8px;"></i> <span
+                            data-i18n="feat3">30-Day Roadmap</span></li>
+                </ul>
+                <button class="btn-outline glow-purple" data-i18n="btnUpgrade">Upgrade Now</button>
+            </section>
+
+            <section class="blog-preview glass card">
+                <h3 data-i18n="blogTitle"><i class="fas fa-newspaper text-cyan" style="margin-right:8px;"></i> Latest
+                    Insights</h3>
+                <div class="blog-list">
+                    <a href="#" class="blog-item">
+                        <span data-i18n="blog1">How to start a business in Pakistan 2026</span>
+                        <i class="fas fa-arrow-right arrow-icon"></i>
+                    </a>
+                    <a href="#" class="blog-item">
+                        <span data-i18n="blog2">Top 5 Freelancing Skills</span>
+                        <i class="fas fa-arrow-right arrow-icon"></i>
+                    </a>
+                    <a href="#" class="blog-item">
+                        <span data-i18n="blog3">Zero Investment Startup Guide</span>
+                        <i class="fas fa-arrow-right arrow-icon"></i>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer glass">
+        <div class="footer-content">
+            <p>&copy; 2026 Ideazium. <span data-i18n="footerTag">Ideas That Build Futures.</span></p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/923447915990" class="whatsapp-float glow-green" target="_blank"
+        title="Contact Us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
